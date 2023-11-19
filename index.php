@@ -8,9 +8,10 @@
 <body>
     <h1>Página Home</h1>
     <ul>
+        <li><a href="pages/admin">Administrador</a></li>
         <li><a href="pages/gerenciar">Gerenciar</a></li>
         <li><a href="pages/caixa">Caixa</a></li>
-        <li><a href="pages/perfil">perfil</a></li>
+        <li><a href="pages/perfil">Perfil</a></li>
     </ul>
     <hr>
     <h2>Produtos</h2>
