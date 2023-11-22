@@ -21,16 +21,16 @@ class User
         R::close();
     }
 
-    public static function Seed()
-    {
-        self::Create(
-            'João Gabriel De Jesus Braga',
-            'jbragas@gmail.com',
-            'restaurante123',
-            '25-10-2023',
-            'admin'
-        );
+    public static function isLogado() {
+        if(isset($_SESSION)) {
+            session_start();
+            return isset($_SESSION['user']);
+        }
+    }
 
-        R::close();
+    // TODO
+    public static function Login($email, $password) {
+        DB::Start();
+        R::find('user');
     }
 }

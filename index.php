@@ -6,13 +6,11 @@
     <title>Restaurante</title>
 </head>
 <body>
-    <h1>Página Home</h1>
-    <ul>
-        <li><a href="pages/admin">Administrador</a></li>
-        <li><a href="pages/gerenciar">Gerenciar</a></li>
-        <li><a href="pages/caixa">Caixa</a></li>
-        <li><a href="pages/perfil">Perfil</a></li>
-    </ul>
+    <header>
+        <?php
+            include_once 'includes/header.inc.php';
+        ?>
+    </header>
     <hr>
     <h2>Produtos</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illo neque, aliquid error non magnam.</p>
