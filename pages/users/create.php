@@ -1,18 +1,24 @@
 <?php
-require_once '../../classes/user.class.php';
+require_once __DIR__ . '\..\..\classes\user.class.php';
+require_once __DIR__ . '\..\..\classes\util.class.php';
+
+if(User::islogado()) {
+    Util::SessionStart();
+    $role = $_SESSION['user']['role'];
+}
 
 if (
-    !empty($_GET['name']) &&
-    !empty($_GET['email']) &&
-    !empty($_GET['password']) &&
-    !empty($_GET['birth']) &&
-    !empty($_GET['role'])
+    !empty($_POST['name']) &&
+    !empty($_POST['email']) &&
+    !empty($_POST['password']) &&
+    !empty($_POST['birth']) &&
+    !empty($_POST['role'])
 ) {
-    $name = $_GET['name'];
-    $email = $_GET['email'];
-    $password = $_GET['password'];
-    $birth = $_GET['birth'];
-    $role = $_GET['role'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $birth = $_POST['birth'];
+    $role = $_POST['role'];
 
     User::Create(
         $name,
@@ -37,30 +43,51 @@ if (
 </head>
 
 <body>
-
+    <header>
+        <?php
+            $path_to_logout = '../users/logout.php';
+            $path_to_admin = '../admin';
+            $path_to_gerenciar = '../gerenciar';
+            $path_to_caixa = '../caixa';
+            $path_to_home = '../../index.php';
+            $path_to_perfil = '../perfil';
+            include_once '../../includes/header.inc.php';
+        ?>
+    </header>
     <main>
-        <form method="get">
+        <h1>Criar usuários</h1>
+        <form method="post">
             <fieldset>
                 <legend>Novo Usuário</legend>
 
                 <label for="name">Nome:</label>
-                <input type="text" id="name" name="name"> <br>
+                <input type="text" id="name" name="name" required> <br>
 
                 <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email"> <br>
+                <input type="email" id="email" name="email" required> <br>
 
                 <label for="password">Senha:</label>
-                <input type="password" id="password" name="password"> <br>
+                <input type="password" id="password" name="password" required> <br>
 
                 <label for="birth">Data de Nascimeto:</label>
-                <input type="date" id="birth" name="birth"> <br>
+                <input type="date" id="birth" name="birth" required> <br>
 
                 <label for="role">Tipo de usuário</label>
-                <select name="role" id="role">
-                    <option value="admin">Administrador</option>
-                    <option value="caixa">Caixa</option>
+                <select name="role" id="role" required>
+                    <option value="" disable selected style=" color:gray;">Selecione uma opção</option>
+                    <?php
+                        if(isset($role)) {
+                            if($role === 'admin') {
+                                echo "<option value=\"admin\">Administrador</option>";
+                                echo "<option value=\"gerente\">Gerente</option>";
+                                echo "<option value=\"caixa\">Caixa</option>";
+                            } else if($role === 'admin' || $role === 'gerente') {
+                                echo "<option value=\"gerente\">Gerente</option>";
+                                echo "<option value=\"caixa\">Caixa</option>";
+                            }
+                        }
+                    ?>
                     <option value="cliente">Cliente</option>
-                    <option value="gerente">Gerente</option>
                 </select>
                 <button type="submit">Cadastrar</button>
             </fieldset>

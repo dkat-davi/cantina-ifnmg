@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main><h1>Deletar Usuários</h1></main>
-</body>
-</html>
+<?php
+    require_once __DIR__ . '\..\..\classes\user.class.php';
+    User::AllowAccess(['admin', 'gerente']);
+    if(isset($_GET['id'])) {
+        User::DeleteById($_GET['id']);
+    }
+
+    header("Location: index.php");
