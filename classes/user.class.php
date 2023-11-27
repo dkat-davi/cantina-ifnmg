@@ -114,7 +114,9 @@ class User
                 die();
             }
         } else {
-            header("Location= ../index.php");
+            echo "<p>Área restrita para usuários com permissão! Você será redirecionado em 5 segundos, caso contrário,<a href=\"../../index.php\">clique aqui.</a></p>";
+                header("Refresh: 5; URL= ../../index.php");
+                die();
         }
     }
 }
