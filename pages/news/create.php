@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <header>Criar Notícias</header>
+    <header>Create News</header>
     <main>
         <form>
             <fieldset>
@@ -22,12 +22,33 @@
                 <input type='text' id='autor' name='autor'><br><br>
 
                 <label for='imagem'>Imagem</label>
-                <input type="file" name="imagem" accept="image/png" required>
+                <input type="file" name="imagem" accept="image/png" required><br><br>
 
+                <input type="submit" value="Enviar">
 
 
             </fieldset>
         </form>
+
+        <?php
+
+       require_once '../../classes/r.class.php';
+       require_once '../../classes/news.class.php';
+
+        if (isset($_GET['titulo']) && isset($_GET['descricao']) && isset($_GET['autor']) && isset($_GET['imagem'])) {
+            $titulo = $_GET['titulo'];
+            $descricao = $_GET['descricao'];
+            $autor = $_GET['autor'];
+            $imagem = $_GET['imagem'];
+
+            News::Create($titulo, $descricao, $autor, $imagem);
+
+
+
+
+        }
+
+        ?>
 
     </main>
 
