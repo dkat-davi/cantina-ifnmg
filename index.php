@@ -23,6 +23,7 @@
             $path_to_admin = './pages/admin';
             $path_to_gerenciar = './pages/gerenciar';
             $path_to_caixa = './pages/caixa';
+            $path_to_news = './pages/news';
             include_once 'includes/header.inc.php';
         ?>
     </header>

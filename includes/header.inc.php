@@ -12,7 +12,7 @@
         $sigla = $first_letter . $last_letter;
 ?>
 
-<h2><?= $sigla ?></h2>
+<h2><?= strtoupper($sigla) ?></h2>
 
 <ul style="display: flex; gap: 4rem;">
     <?php
@@ -68,6 +68,10 @@
         if(isset($path_to_home)) { 
             echo "<li><a href=\"$path_to_home\">Home</a></li>";
         }
+        if(isset($path_to_news)) {
+            echo "<li><a href=\"$path_to_news\">Notícias</a></li>";
+            
+        }
         
         if(isset($path_to_logout)) {
             echo "<li><a href=\"$path_to_logout\">Logout</a></li>";
@@ -83,6 +87,10 @@
         
         if(isset($path_to_login)) {
             echo "<li><a href=\"$path_to_login\">Login</a></li>";
+            
+        }
+        if(isset($path_to_news)) {
+            echo "<li><a href=\"$path_to_news\">Notícias</a></li>";
             
         }
 ?>

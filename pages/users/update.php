@@ -21,6 +21,7 @@
             $path_to_caixa = '../caixa';
             $path_to_home = '../../index.php';
             $path_to_perfil = '../perfil';
+            $path_to_news = '../news';
             include_once '../../includes/header.inc.php';
 
             if(isset($_GET['id'])) {

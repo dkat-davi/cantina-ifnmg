@@ -21,6 +21,7 @@
             $path_to_gerenciar = '../gerenciar';
             $path_to_home = '../../index.php';
             $path_to_perfil = '../perfil';
+            $path_to_news = '../news';
             include_once '../../includes/header.inc.php';
         ?>
     </header>
