@@ -12,21 +12,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante</title>
+    <link rel="stylesheet" href="./styles/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <header>
-        <?php
-            $path_to_login = './pages/login';
-            $path_to_logout = './pages/users/logout.php';
-            $path_to_perfil = './pages/perfil';
-            $path_to_admin = './pages/admin';
-            $path_to_gerenciar = './pages/gerenciar';
-            $path_to_caixa = './pages/caixa';
-            $path_to_news = './pages/news';
-            include_once 'includes/header.inc.php';
-        ?>
-    </header>
+    <?php
+        $path_to_login = './pages/login';
+        $path_to_logout = './pages/users/logout.php';
+        $path_to_perfil = './pages/perfil';
+        $path_to_admin = './pages/admin';
+        $path_to_gerenciar = './pages/gerenciar';
+        $path_to_caixa = './pages/caixa';
+        $path_to_news = './pages/news';
+        $path_to_home = '#';
+        $path_to_products = './pages/products';
+        include_once 'includes/header.inc.php';
+    ?>
     <hr>
     <h2>Notícias</h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illo neque, aliquid error non magnam.</p>

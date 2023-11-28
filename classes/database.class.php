@@ -23,7 +23,8 @@ class DB
                 'jbragas@gmail.com',
                 'restaurante123',
                 '25-10-2023',
-                'admin'
+                'admin',
+                TRUE
             );
         } 
         

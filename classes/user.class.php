@@ -6,7 +6,7 @@ require_once __DIR__ . '\util.class.php';
 class User
 {
     const SALT = 'resturantetrabalhoequipe123';
-    public static function Create($name, $email, $password, $birth, $role)
+    public static function Create($name, $email, $password, $birth, $role, $active)
     {
         DB::Start();
 
@@ -16,6 +16,7 @@ class User
         $user->password = md5($password . self::SALT);
         $user->birth = new DateTime($birth);
         $user->role = $role;
+        $user->active = $active;
 
         R::store( $user );
 
@@ -24,13 +25,18 @@ class User
 
     public static function GetAll() {
         DB::Start();
-        return R::findAll('user');
+        Util::SessionStart();
+        if($_SESSION['user']['role'] === 'gerente') {
+            return R::find('user', 'role != ? AND role != ?', ['admin', 'gerente']);
+        } else {
+            return R::findAll('user');
+        }
         R::close();
     }
 
     public static function GetById($id) {
         DB::Start();
-        return R::findOne('user', $id);
+        return R::load('user', $id);
         R::close();
     }
 
@@ -40,7 +46,7 @@ class User
         R::close();
     }
 
-    public static function Update($id, $name, $email, $password, $birth, $role)
+    public static function Update($id, $name, $email, $password, $birth, $role, $active)
     {
         DB::Start();
 
@@ -52,6 +58,7 @@ class User
         $user->password = md5($password . self::SALT);
         $user->birth = new DateTime($birth);
         $user->role = $role;
+        $user->active = $active;
 
         R::store( $user );
 
@@ -71,22 +78,26 @@ class User
         $user = R::findOne('user', 'email = ? AND password = ?', [$email, md5($password . self::SALT)]);
     
         if($user) {
-            Util::SessionStart();
+            if($user->active) {
+                Util::SessionStart();
             
-            $userdata = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'birth' => $user->birth,
-                'role' => $user->role
-            ];
+                $userdata = [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'birth' => $user->birth,
+                    'role' => $user->role
+                ];
 
-            $_SESSION['user'] = $userdata;
+                $_SESSION['user'] = $userdata;
 
-            session_write_close();
+                session_write_close();
 
-            header("Location: ../../index.php");
-            exit();
+                header("Location: ../../index.php");
+                exit();
+            } else {
+                header("Location: ?unactive");    
+            }
         } else {
             header("Location: ?unauthorized");
         }
@@ -118,5 +129,16 @@ class User
                 header("Refresh: 5; URL= ../../index.php");
                 die();
         }
+    }
+
+    public static function ActiveUser($id) {
+        echo 'entrou';
+        $user = self::GetById($id);
+        $user->active = !$user->active;
+        DB::Start();
+        R::store( $user );
+        R::close();
+        header("Location: ../../pages/users/index.php");
+        exit();
     }
 }

@@ -1,70 +1,119 @@
-main {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+body {
+  background-image: url("../assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
+main {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 form {
-    width: 30%;
-    padding: 2rem;
-    margin: 2rem;
-    background-color: #fff0d1;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: column;
+  width: 30%;
+  height: 40rem;
+  padding: 2rem 4rem;
+  margin: 2rem;
+  background-color: rgba(255, 240, 209, 0.9);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-input, button {
-    width: 100%;
-    height: 4rem;
-    
-    padding: 1rem;
-    margin-bottom: 1rem; 
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
-    outline: none; 
-  }
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: rgb(17, 12, 0);
+}
+
+div h1 {
+  white-space: nowrap;
+}
+
+input,
+button {
+  width: 100%;
+  height: 4rem;
+
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
 
 button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    background-color: rgb(232, 118, 61);
-    color:#fff0d1;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background-color: #e8763d;
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
 }
 
-button::hover {
-    background-color: #D5E9E8;
-    transform: scale(1.01);
+button:hover {
+  background-color: rgb(204, 101, 50);
+  color: #e6d8be;
 }
 
 input::placeholder {
-    color: #a0a0a0; 
-  }
-  
-input:focus {
-    box-shadow: 0 0 5px #a0a0a0; 
+  color: #a0a0a0;
 }
 
-a {
-    width: 100%;
-    text-align: center;
-    color: #4f4f4f;
+input:focus {
+  box-shadow: 0 0 5px rgba(177, 124, 0, 0.63);
+}
+
+form a {
+  width: 100%;
+  text-align: center;
+  color: #4f4f4f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+form a:hover {
+  text-decoration: underline;
 }
 
 p {
-    text-align: center;
-    margin-top: 1rem;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 label {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+#create-account {
+  color: #4f4f4f;
+}
+
+/* Estilos para telas médias (tablets) */
+@media only screen and (max-width: 768px) {
+  form {
+    width: 50%;
+  }
+}
+
+/* Estilos para telas pequenas (dispositivos móveis) */
+@media only screen and (max-width: 480px) {
+  form {
+    width: 90%;
+  }
 }

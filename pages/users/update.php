@@ -10,29 +10,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuários</title>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <header>
-        <?php
-            $path_to_logout = '../users/logout.php';
-            $path_to_admin = '../admin';
-            $path_to_gerenciar = '../gerenciar';
-            $path_to_caixa = '../caixa';
-            $path_to_home = '../../index.php';
-            $path_to_perfil = '../perfil';
-            $path_to_news = '../news';
-            include_once '../../includes/header.inc.php';
+    <?php
+        $path_to_logout = '../users/logout.php';
+        $path_to_admin = '../admin';
+        $path_to_gerenciar = '../gerenciar';
+        $path_to_caixa = '../caixa';
+        $path_to_home = '../../index.php';
+        $path_to_perfil = '../perfil';
+        $path_to_news = '../news';
+        include_once '../../includes/header.inc.php';
 
-            if(isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $user = User::GetById($id);
-            } else {
-                header("Location: index.php");
-                die();
-            }
-        ?>
-    </header>
+        if(isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $user = User::GetById($id);
+        } else {
+            header("Location: index.php");
+            die();
+        }
+    ?>
     <main>
         <h1>Editar Usuário</h1>
         <form method="post">
@@ -61,7 +63,13 @@
                     <option value="caixa" <?= $user->role === 'caixa' ? 'selected' : ''?>>Caixa</option>
                     <option value="cliente" <?= $user->role === 'cliente' ? 'selected' : ''?>>Cliente</option>
                 </select>
-                <button type="submit">Cadastrar</button>
+
+                <div id="active-user">
+                    <label for="active">Ativar usuário:</label>
+                    <input type="checkbox" id="active" name="active" <?=$user->active ? 'checked' : ''?>>
+                </div>
+
+                <button type="submit">Editar</button>
             </fieldset>
         </form>
         <?php
@@ -81,6 +89,7 @@
                 $password = $_POST['password'];
                 $birth = $_POST['birth'];
                 $role = $_POST['role'];
+                $active = isset($_POST['active']);
             
                 User::Update(
                     $id,
@@ -88,7 +97,8 @@
                     $email,
                     $password,
                     $birth,
-                    $role
+                    $role,
+                    $active
                 );
             
                 header("Location: index.php");

@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerência de usuários</title>
+    <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -39,18 +40,17 @@
 </head>
 
 <body>
-    <header>
-        <?php
-            $path_to_logout = '../users/logout.php';
-            $path_to_admin = '../admin';
-            $path_to_gerenciar = '../gerenciar';
-            $path_to_caixa = '../caixa';
-            $path_to_home = '../../index.php';
-            $path_to_perfil = '../perfil';
-            $path_to_news = '../news';
-            include_once '../../includes/header.inc.php';
-        ?>
-    </header>
+    <?php
+        $path_to_logout = '../users/logout.php';
+        $path_to_admin = '../admin';
+        $path_to_gerenciar = '../gerenciar';
+        $path_to_caixa = '../caixa';
+        $path_to_home = '../../index.php';
+        $path_to_perfil = '../perfil';
+        $path_to_news = '../news';
+        $path_to_login = '../login';
+        include_once '../../includes/header.inc.php';
+    ?>
     <main>
         <h1>Gerência de Usuários</h1>
 
@@ -67,6 +67,7 @@
                     <th>Email</th>
                     <th>Nasc.</th>
                     <th>Tipo</th>
+                    <th>Ativar</th>
                     <th>Editar</th>
                     <th>Excluir</th>
                 </tr>
@@ -87,6 +88,7 @@
                     <td><?=$user->email?></td>
                     <td><?=$birth?></td>
                     <td><?=strtoupper($user->role)?></td>
+                    <td> <a href="./active.php?id=<?=$user->id?>"><?=$user->active ? 'Ativo' : 'Inativo' ?></a></td>
                     <td><a href="./update.php?id=<?=$user->id?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
                     <td><a href="./delete.php?id=<?=$user->id?>"><i class="fa-solid fa-trash"></i></i></a></td>
                 </tr>
