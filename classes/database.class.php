@@ -19,15 +19,39 @@ class DB
         
         if(!$users) {
             User::Create(
-                'João Gabriel De Jesus Braga',
-                'jbragas@gmail.com',
-                'restaurante123',
+                'Administrador Teste',
+                'admin@gmail.com',
+                'admin',
                 '25-10-2023',
                 'admin',
                 TRUE
             );
+            User::Create(
+                'Gerente Teste',
+                'gerente@gmail.com',
+                'gerente',
+                '25-10-2023',
+                'gerente',
+                TRUE
+            );
+            User::Create(
+                'Caixa Teste',
+                'caixa@gmail.com',
+                'caixa',
+                '25-10-2023',
+                'caixa',
+                TRUE
+            );
+            User::Create(
+                'Cliente Teste',
+                'cliente@gmail.com',
+                'cliente',
+                '25-10-2023',
+                'cliente',
+                TRUE
+            );
         } 
-        
+
         R::close();
     }
 }

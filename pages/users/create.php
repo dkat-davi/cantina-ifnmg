@@ -61,7 +61,7 @@ if (
         $path_to_news = '../news';
         $path_to_login = '../login';
         include_once '../../includes/header.inc.php';
-        ?>
+    ?>
 
     <main>
         <form method="post">

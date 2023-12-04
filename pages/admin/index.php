@@ -29,7 +29,7 @@
     ?>
     <h1> Página do Admin</h1>
     <h2><a href="../users/">Administrar Usuários</a></h2>
-    <h2><a href="#">Administrar Produtos</a></h2>
+    <h2><a href="../products/">Administrar Produtos</a></h2>
     <h2><a href="#">Administrar Notícias</a></h2>
 </body>
 
