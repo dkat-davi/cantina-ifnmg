@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Usuários</title>
     <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/users/update.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,41 +37,43 @@
         }
     ?>
     <main>
-        <h1>Editar Usuário</h1>
         <form method="post">
-            <fieldset>
-                <legend>Editar Usuário</legend>
+            <div>
+                <h1>Editar Usuário</h1>
+            </div>
 
-                <input type="hidden" name="id" value="<?=$user->id?>">
+            <input type="hidden" name="id" value="<?=$user->id?>">
 
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" value="<?=$user->name?>" required> <br>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="<?=$user->name?>" required> <br>
 
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" value="<?=$user->email?>" required> <br>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="<?=$user->email?>" required> <br>
 
-                <label for=" password">Senha:</label>
-                <input type="password" id="password" name="password" required> <br>
+            <label for=" password">Senha:</label>
+            <input type="password" id="password" name="password" required> <br>
 
-                <label for="birth">Data de Nascimeto:</label>
-                <input type="date" id="birth" name="birth" value="<?=$user->birth?>" required> <br>
+            <label for="birth">Data de Nascimeto:</label>
+            <input type="date" id="birth" name="birth" value="<?=$user->birth?>" required> <br>
 
-                <label for="role">Tipo de usuário</label>
-                <select name="role" id="role" required>
-                    <option value="" disable style=" color:gray;">Selecione uma opção</option>
-                    <option value="admin" <?= $user->role === 'admin' ? 'selected' : ''?>>Administrador</option>
-                    <option value="gerente" <?= $user->role === 'gerente' ? 'selected' : ''?>>Gerente</option>
-                    <option value="caixa" <?= $user->role === 'caixa' ? 'selected' : ''?>>Caixa</option>
-                    <option value="cliente" <?= $user->role === 'cliente' ? 'selected' : ''?>>Cliente</option>
-                </select>
+            <label for="role">Tipo de usuário</label>
+            <select name="role" id="role" required>
+                <option value="" disable style=" color:gray;">Selecione uma opção</option>
+                <option value="admin" <?= $user->role === 'admin' ? 'selected' : ''?>>Administrador</option>
+                <option value="gerente" <?= $user->role === 'gerente' ? 'selected' : ''?>>Gerente</option>
+                <option value="caixa" <?= $user->role === 'caixa' ? 'selected' : ''?>>Caixa</option>
+                <option value="cliente" <?= $user->role === 'cliente' ? 'selected' : ''?>>Cliente</option>
+            </select>
 
-                <div id="active-user">
-                    <label for="active">Ativar usuário:</label>
-                    <input type="checkbox" id="active" name="active" <?=$user->active ? 'checked' : ''?>>
-                </div>
+            <div id="active-user">
+                <label for="active">Ativar usuário:</label>
+                <input type="checkbox" id="active" name="active" <?=$user->active ? 'checked' : ''?>>
+            </div>
 
-                <button type="submit">Editar</button>
-            </fieldset>
+            <div class="submit-form">
+                <button type="submit" class="submit">Salvar</button>
+                <button class="cancel"><a href="./index.php">Cancelar</a></button>
+            </div>
         </form>
         <?php
             if (

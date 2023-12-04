@@ -12,31 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerência de usuários</title>
     <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/users/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #f2f2f2;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    </style>
 </head>
 
 <body>
@@ -49,17 +28,39 @@
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_login = '../login';
+        $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
     ?>
     <main>
-        <h1>Gerência de Usuários</h1>
+        <?php
+            $users = User::GetAll();
+        ?>
 
-        <ul>
-            <li><a href="./create.php">Criar novos usuários</a></li>
-        </ul>
+        <h1 class="title">Gerenciamento de Usuários</h1>
+
+        <div class="cards">
+            <a href="./create.php" class="card add-users">
+                <div>
+                    <h1><?=count($users)?></h1>
+                    <p>Adicionar Usuários</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+            </a>
+
+            <a href="./create.php" class="card debit">
+                <div>
+                    <p>Verificar débitos</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+            </a>
+        </div>
+
 
         <table>
-            <caption>Usuários</caption>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -67,9 +68,9 @@
                     <th>Email</th>
                     <th>Nasc.</th>
                     <th>Tipo</th>
-                    <th>Ativar</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -77,7 +78,6 @@
 
 
                 <?php
-                    $users = User::GetAll();
                     foreach ($users as $user) {
                         $birth = new DateTime($user->birth);
                         $birth = $birth->format('d/m/Y');
@@ -88,9 +88,21 @@
                     <td><?=$user->email?></td>
                     <td><?=$birth?></td>
                     <td><?=strtoupper($user->role)?></td>
-                    <td> <a href="./active.php?id=<?=$user->id?>"><?=$user->active ? 'Ativo' : 'Inativo' ?></a></td>
-                    <td><a href="./update.php?id=<?=$user->id?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                    <td><a href="./delete.php?id=<?=$user->id?>"><i class="fa-solid fa-trash"></i></i></a></td>
+                    <td>
+                        <?php
+                        if($user->active) {
+                        ?>
+                        <a href="./active.php?id=<?=$user->id?>" class="unactive">Desativar</a>
+                        <?php
+                        } else {  
+                        ?>
+                        <a href="./active.php?id=<?=$user->id?>" class="active">Ativar</a>
+                        <?php
+                        }
+                        ?>
+                    </td>
+                    <td><a href="./update.php?id=<?=$user->id?>" class="edit">Editar</a></td>
+                    <td><a href="./delete.php?id=<?=$user->id?>" class="delete">Excluir</a></td>
                 </tr>
                 <?php
                     }

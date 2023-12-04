@@ -60,6 +60,7 @@ if (
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_login = '../login';
+        $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
     ?>
 
@@ -119,7 +120,10 @@ if (
                     }
             ?>
 
-            <button type="submit">Cadastrar</button>
+            <div class="submit-form">
+                <button type="submit" class="submit">Salvar</button>
+                <button class="cancel"><a href="./index.php">Cancelar</a></button>
+            </div>
 
             <?php
                 if(isset($_GET['success'])) {

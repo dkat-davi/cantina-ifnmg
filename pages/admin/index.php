@@ -25,6 +25,7 @@
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_admin = '';
+        $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
     ?>
     <h1> Página do Admin</h1>

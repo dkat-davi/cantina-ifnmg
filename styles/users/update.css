@@ -1,0 +1,140 @@
+body {
+  background-image: url("../../assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+main {
+  width: 100%;
+  height: 80vh;
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 30%;
+  padding: 2rem 4rem;
+  margin: 2rem;
+  background-color: #fff0d1;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 2rem 0;
+  font-size: 0.9em;
+  color: rgb(17, 12, 0);
+}
+
+div h1 {
+  white-space: nowrap;
+}
+
+input,
+select {
+  width: 100%;
+  height: 4rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background-color: #e8763d;
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
+  width: 50%;
+  height: 4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #a0a0a0;
+}
+
+input:focus {
+  box-shadow: 0 0 5px rgba(177, 124, 0, 0.63);
+}
+
+div#active-user {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+}
+
+div#active-user input {
+  width: 2rem;
+  height: 2rem;
+}
+
+label {
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.submit-form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 0;
+}
+
+.cancel {
+  background-color: #c63637;
+}
+
+.cancel a {
+  text-decoration: none;
+  color: white;
+}
+
+.cancel:hover {
+  background-color: #a72d2d;
+  color: #e6d8be;
+}
+
+.submit:hover {
+  background-color: rgb(204, 101, 50);
+  color: #e6d8be;
+}
+
+@media only screen and (max-width: 768px) {
+  form {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  form {
+    width: 90%;
+  }
+}

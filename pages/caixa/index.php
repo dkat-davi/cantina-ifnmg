@@ -26,6 +26,7 @@
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_caixa = '';
+        $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
     ?>
     <main>
