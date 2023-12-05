@@ -16,57 +16,57 @@
     <?php
         $path_to_logout = '../users/logout.php';
         $path_to_admin = '../admin';
-        $path_to_gerenciar = '../gerenciar';
+        $path_to_gerenciar = '../admin';
         $path_to_caixa = '../caixa';
         $path_to_home = '../../index.php';
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_login = '../login';
         $path_to_products = '';
+        $path_to_cardapio = '../cardapio';
         include_once '../../includes/header.inc.php';
     ?>
     <main>
-        <h1>Produtos</h1>
+        <h1 class="title">Produtos</h1>
 
-        <?php
-            require_once __DIR__ . '\..\..\classes\user.class.php';
-            require_once __DIR__ . '\..\..\classes\util.class.php';
-            if(User::IsLogado()) {
-                Util::SessionStart();
-                if($_SESSION['user']['role'] === 'admin' || $_SESSION['user']['role'] === 'gerente') {
-                    echo '<h2><a href="./create.php">Adicionar produtos</a></h2>';
-                }
-            }
-        ?>
-
-        <div class="products">
-            <?php
-                require_once __DIR__ . '\..\..\classes\product.class.php';
-                $products = Product::GetAll();
-                if(empty($products)) {
-                    echo 'Não há nenhum produto cadastrado';
-                }
-                foreach ($products as $product) {
+        <div class="container">
+            <div class="products">
+                <?php
+                    require_once __DIR__ . '\..\..\classes\product.class.php';
+                    $products = Product::GetAll();
+                    if(empty($products)) {
+                        echo 'Não há nenhum produto cadastrado';
+                    }
+                    foreach ($products as $product) {
+                        ?>
+                <div class="card-product">
+                    <div class="image">
+                        <img src="../../assets/img/products/<?=$product->image?>"
+                            alt="Image do produto <?=$product->name?>" width="150" height="150">
+                    </div>
+                    <p id="description">
+                        <?=$product->description?>
+                    </p>
+                    <?php
+                        if($product->qtde == 0) {
+                            ?>
+                    <p style="font-weight: bold; margin-top: 2rem;">
+                        PRODUTO ESGOTADO
+                    </p>
+                    <?php
+                        } else {
                     ?>
-
-            <div class="card-product">
-                <div class="image">
-                    <img src="../../assets/img/products/<?=$product->image?>"
-                        alt="Image do produto <?=$product->name?>">
-                </div>
-                <div class="description">
-                    <p id="name">
-                        <?=$product->name?>
-                    </p>
                     <p id="price">
-                        R$<?=$product->price?>
+                        R$<?=$product->price .' - '. $product->unidade?>
                     </p>
+                    <?php
+                        }
+                    ?>
                 </div>
+                <?php
+                    }
+                ?>
             </div>
-
-            <?php    
-                }
-            ?>
         </div>
 
     </main>

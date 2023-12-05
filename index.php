@@ -24,11 +24,12 @@
         $path_to_logout = './pages/users/logout.php';
         $path_to_perfil = './pages/perfil';
         $path_to_admin = './pages/admin';
-        $path_to_gerenciar = './pages/gerenciar';
+        $path_to_gerenciar = './pages/admin';
         $path_to_caixa = './pages/caixa';
         $path_to_news = './pages/news';
         $path_to_home = '#';
         $path_to_products = './pages/products';
+        $path_to_cardapio = './pages/cardapio';
         include_once 'includes/header.inc.php';
     ?>
     <hr>

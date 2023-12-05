@@ -5,6 +5,10 @@ main {
   align-items: center;
 }
 
+.container {
+  width: 80%;
+}
+
 .title {
   font-size: 1.2em;
   text-align: left;
@@ -42,22 +46,12 @@ div.cards {
   font-size: 1em;
 }
 
-.add-users {
+.add-products {
   background-color: rgb(90, 156, 255);
 }
 
-.add-users:hover {
+.add-products:hover {
   background-color: rgb(71, 136, 233);
-  transition: background 0.2s ease-out;
-}
-
-.debit {
-  background-color: #82cc9b;
-  flex-direction: row;
-}
-
-.debit:hover {
-  background-color: #70b386;
   transition: background 0.2s ease-out;
 }
 

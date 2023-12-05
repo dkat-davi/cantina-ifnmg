@@ -1,0 +1,101 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 80%;
+}
+
+.title {
+  font-size: 1.2em;
+  text-align: left;
+  width: 80%;
+  padding: 2rem 0 0 0;
+  color: rgb(54, 36, 1);
+}
+
+div.cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4rem;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+.card i {
+  font-size: 4em;
+}
+
+.card p {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.users {
+  background-color: rgb(90, 156, 255);
+}
+
+.users:hover {
+  background-color: rgb(71, 136, 233);
+  transition: background 0.2s ease-out;
+}
+
+.users i {
+  color: rgb(45, 81, 134);
+}
+
+.products {
+  background-color: #82cc9b;
+  flex-direction: row;
+}
+
+.products:hover {
+  background-color: #70b386;
+  transition: background 0.2s ease-out;
+}
+
+.products i {
+  color: rgb(45, 134, 49);
+}
+
+.news {
+  background-color: rgb(255, 187, 0);
+  color: rgb(43, 29, 0);
+}
+
+.news:hover {
+  background-color: rgb(214, 158, 5);
+  transition: background 0.2s ease-out;
+}
+
+.news i {
+  color: rgb(107, 84, 36);
+}
+
+.cardapio {
+  background-color: #c63637;
+  color: rgb(43, 29, 0);
+}
+
+.cardapio:hover {
+  background-color: #af3030;
+  transition: background 0.2s ease-out;
+}
+
+.cardapio i {
+  color: rgb(134, 45, 45);
+}

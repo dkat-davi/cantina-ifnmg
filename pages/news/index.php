@@ -15,13 +15,14 @@
     <?php
         $path_to_logout = '../users/logout.php';
         $path_to_admin = '../admin';
-        $path_to_gerenciar = '../gerenciar';
+        $path_to_gerenciar = '../admin';
         $path_to_caixa = '../caixa';
         $path_to_home = '../../index.php';
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_login = '../login';
         $path_to_products = '../products';
+        $path_to_cardapio = '../cardapio';
         include_once '../../includes/header.inc.php';
     ?>
     <main>

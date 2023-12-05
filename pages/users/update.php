@@ -21,11 +21,13 @@
     <?php
         $path_to_logout = '../users/logout.php';
         $path_to_admin = '../admin';
-        $path_to_gerenciar = '../gerenciar';
+        $path_to_gerenciar = '../admin';
         $path_to_caixa = '../caixa';
         $path_to_home = '../../index.php';
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
+        $path_to_cardapio = '../cardapio';
+        $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
 
         if(isset($_GET['id'])) {
@@ -38,7 +40,7 @@
     ?>
     <main>
         <form method="post">
-            <div>
+            <div class="title">
                 <h1>Editar Usuário</h1>
             </div>
 
