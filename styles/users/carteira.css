@@ -1,0 +1,100 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.2em;
+  text-align: left;
+  width: 80%;
+  padding: 2rem 0 0 0;
+  color: rgb(54, 36, 1);
+}
+
+form.search {
+  padding: 1rem 0;
+  width: 80%;
+}
+
+label {
+  font-size: 0.8em;
+}
+
+input {
+  height: 4rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+  background-color: #fff0d1;
+}
+
+button {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background-color: #e8763d;
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+td {
+  padding: 1.8rem 01rem;
+  vertical-align: middle;
+}
+
+.edit,
+.delete,
+.unactive,
+.active {
+  text-decoration: none;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.8rem;
+  margin-top: 2rem;
+}
+
+.edit {
+  background-color: #82cc9b;
+  color: rgb(43, 29, 0);
+}
+
+.delete {
+  background-color: #c63637;
+  color: white;
+}
+
+.unactive {
+  background-color: rgb(255, 187, 0);
+  color: rgb(43, 29, 0);
+}
+
+.active {
+  background-color: rgb(90, 156, 255);
+  color: white;
+}

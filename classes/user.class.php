@@ -6,7 +6,7 @@ require_once __DIR__ . '\util.class.php';
 class User
 {
     const SALT = 'resturantetrabalhoequipe123';
-    public static function Create($name, $email, $password, $birth, $role, $active)
+    public static function Create($name, $email, $password, $birth, $role, $active, $pin)
     {
         DB::Start();
 
@@ -17,6 +17,8 @@ class User
         $user->birth = new DateTime($birth);
         $user->role = $role;
         $user->active = $active;
+        $user->carteira = FALSE;
+        $user->pin = md5($pin . self::SALT);
 
         R::store( $user );
 
@@ -38,6 +40,13 @@ class User
         DB::Start();
         return R::load('user', $id);
         R::close();
+    }
+
+    public static function GetUserByName($name) {
+        DB::Start();
+        $users = R::find('user', 'name LIKE ?', ['%' . $name . '%']);
+        return $users;
+        R::close;
     }
 
     public static function DeleteById($id) {
@@ -132,13 +141,22 @@ class User
     }
 
     public static function ActiveUser($id) {
-        echo 'entrou';
         $user = self::GetById($id);
         $user->active = !$user->active;
         DB::Start();
         R::store( $user );
         R::close();
         header("Location: ../../pages/users/index.php");
+        exit();
+    }
+
+    public static function ActiveCarteira($id) {
+        $user = self::GetById($id);
+        $user->carteira = !$user->carteira;
+        DB::Start();
+        R::store( $user );
+        R::close();
+        header("Location: ../../pages/users/carteira.php");
         exit();
     }
 }

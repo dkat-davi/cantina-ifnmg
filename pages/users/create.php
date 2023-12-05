@@ -12,7 +12,8 @@ if (
     !empty($_POST['email']) &&
     !empty($_POST['password']) &&
     !empty($_POST['birth']) &&
-    !empty($_POST['role'])
+    !empty($_POST['role']) &&
+    !empty($_POST['pin'])
 ) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -20,6 +21,7 @@ if (
     $birth = $_POST['birth'];
     $role = $_POST['role'];
     $active = isset($_POST['active']);
+    $pin = $_POST['pin'];
 
     User::Create(
         $name,
@@ -27,7 +29,8 @@ if (
         $password,
         $birth,
         $role,
-        $active
+        $active,
+        $pin
     );
 
     header("Location: create.php?success");
@@ -86,6 +89,10 @@ if (
 
             <label for="password">Senha:</label>
             <input type="password" id="password" name="password" required placeholder="Insira seu senha">
+
+            <label for="pin">PIN:</label>
+            <input type="password" id="pin" name="pin" required placeholder="Insira uma senha de 4 dígitos"
+                maxlength="4">
 
             <label for="birth">Data de Nascimeto:</label>
             <input type="date" id="birth" name="birth" required placeholder="Insira sua data de nascimento">

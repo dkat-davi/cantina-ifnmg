@@ -50,9 +50,9 @@
                 </div>
             </a>
 
-            <a href="./create.php" class="card debit">
+            <a href="./carteira.php" class="card debit">
                 <div>
-                    <p>Verificar débitos</p>
+                    <p>Carteira</p>
                 </div>
                 <div>
                     <i class="fa-solid fa-credit-card"></i>

@@ -24,7 +24,8 @@ class DB
                 'admin',
                 '25-10-2023',
                 'admin',
-                TRUE
+                TRUE,
+                1234
             );
             User::Create(
                 'Gerente Teste',
@@ -32,7 +33,8 @@ class DB
                 'gerente',
                 '25-10-2023',
                 'gerente',
-                TRUE
+                TRUE,
+                1234
             );
             User::Create(
                 'Caixa Teste',
@@ -40,7 +42,8 @@ class DB
                 'caixa',
                 '25-10-2023',
                 'caixa',
-                TRUE
+                TRUE,
+                1234
             );
             User::Create(
                 'Cliente Teste',
@@ -48,7 +51,8 @@ class DB
                 'cliente',
                 '25-10-2023',
                 'cliente',
-                TRUE
+                TRUE,
+                1234
             );
         } 
 
