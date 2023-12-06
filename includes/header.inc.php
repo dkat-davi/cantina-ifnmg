@@ -1,5 +1,5 @@
 <header>
-    <h1><a href="<?=$path_to_home?>">LOGO</a></h1>
+    <h1 style="margin-top: .7rem;"><a href="<?=$path_to_home?>"><img src="<?=$path_to_logo?>" alt="Logo do restaurante" width="70" heigth="70"></a></h1>
 
 
 

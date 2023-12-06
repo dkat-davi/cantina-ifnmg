@@ -23,6 +23,7 @@
         $path_to_news = '../news';
         $path_to_login = '../login';
         $path_to_products = '../products';
+        $path_to_logo = '../../assets/logo.png';
         include_once '../../includes/header.inc.php';
         require_once __DIR__ . '\..\..\classes\news.class.php';
         require_once __DIR__ . '\..\..\classes\user.class.php';

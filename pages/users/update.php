@@ -27,6 +27,7 @@
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
         $path_to_products = '../products';
+        $path_to_logo = '../../assets/logo.png';
         include_once '../../includes/header.inc.php';
 
         if(isset($_GET['id'])) {
