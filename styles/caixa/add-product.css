@@ -48,6 +48,23 @@ main {
   outline: none;
 }
 
+.submit-form a {
+  font-weight: bold;
+  background-color: rgb(143, 0, 0);
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
+  width: 20%;
+  height: 4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+  text-decoration: none;
+}
+
 .card-product {
   display: flex;
   flex-direction: column;
@@ -96,7 +113,6 @@ form .add-product {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -108,6 +124,15 @@ form .add-product input[type="checkbox"] {
     border-radius: 4px; 
     outline: none;
     cursor: pointer; 
+}
+
+form .add-product input[type="number"] {
+  width: 100%;
+}
+
+.qtde {
+  flex-direction: column;
+  align-items: start;
 }
 
 form button:hover {

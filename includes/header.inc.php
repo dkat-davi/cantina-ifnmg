@@ -14,11 +14,6 @@
             echo "<li><a href=\"$path_to_products\">Produtos</a></li>";
         }
 
-        
-        if(isset($path_to_cardapio)) {
-            echo "<li><a href=\"$path_to_cardapio\">Cardápio</a></li>";
-        }
-
         if(isset($path_to_news)) {
             echo "<li><a href=\"$path_to_news\">Notícias</a></li>";
             

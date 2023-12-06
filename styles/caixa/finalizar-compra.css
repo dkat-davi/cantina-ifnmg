@@ -20,11 +20,45 @@ main {
   color: rgb(54, 36, 1);
 }
 
+.wrapper {
+  display: flex;
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+div.cliente {
+  width:30%;
+  background-color: #e7d4ac;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+
+.a-vista, .a-prazo {
+  text-decoration: none;
+  color: rgb(43, 29, 0);
+  padding: 1rem;
+  font-weight: bold;
+  margin-top: 10rem;
+  border-radius: 1rem;
+}
+
+.a-prazo {
+  background-color: #c63637;
+}
+
+.a-vista {
+  background-color: rgb(76, 196, 39); 
+}
+
 div.table {
     background-color: #e7d4ac;
     border-radius: 1rem;
     padding: 1rem;
     margin-top: 1rem;
+    width: 70%;
 }
 
 table {
@@ -33,6 +67,15 @@ table {
     margin-bottom: 20px;
     background-color: #e7d4ac;
     margin: auto;
+}
+
+table caption {
+  background-color: rgb(54, 36, 1);
+  color: #e7d4ac;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 thead tr,
@@ -52,4 +95,41 @@ padding: 1.8rem 01rem;
 vertical-align: middle;
 }
 
+.submit-form {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+}
 
+.submit-form button {
+  font-weight: bold;
+  background-color: rgb(54, 36, 1);
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
+  width: 20%;
+  height: 4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+}
+
+.submit-form a {
+  font-weight: bold;
+  background-color: rgb(143, 0, 0);
+  color: #fff0d1;
+  cursor: pointer;
+  transition: background 0.1s ease-in;
+  width: 20%;
+  height: 4rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  outline: none;
+  text-decoration: none;
+}

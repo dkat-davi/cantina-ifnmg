@@ -28,7 +28,6 @@
         $path_to_news = '../news';
         $path_to_caixa = './';
         $path_to_products = '../products';
-        $path_to_cardapio = '../cardapio';
         include_once '../../includes/header.inc.php';
     ?>
     <main>
@@ -38,6 +37,7 @@
                 <form action="finalizar-compra.php" method="post" class="products">
                     <div class="submit-form">
                         <button type="submit">Continuar venda</button>
+                        <a href="./cancelar.php">Cancelar venda</a>
                     </div>
                     <?php
                         require_once __DIR__ . '\..\..\classes\product.class.php';
@@ -73,6 +73,15 @@
                                         name="products[]"
                                         value="<?=$product->id?>"
                                         id="products"
+                                    >
+                                </div>
+                                <div class="add-product qtde">
+                                    <label for="qtde_<?= $product['id']; ?>">Quantidade</label>
+                                    <input
+                                        type="number"
+                                        name="qtde[<?=$product->id?>]"
+                                        id="qtde_<?= $product['id']; ?>"
+                                        min="1"
                                     >
                                 </div>
                             </div>

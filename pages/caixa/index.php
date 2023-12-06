@@ -28,7 +28,6 @@
         $path_to_news = '../news';
         $path_to_caixa = '';
         $path_to_products = '../products';
-        $path_to_cardapio = '../cardapio';
         include_once '../../includes/header.inc.php';
     ?>
     <main>

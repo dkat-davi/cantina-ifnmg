@@ -26,7 +26,6 @@
         $path_to_home = '../../index.php';
         $path_to_perfil = '../perfil';
         $path_to_news = '../news';
-        $path_to_cardapio = '../cardapio';
         $path_to_products = '../products';
         include_once '../../includes/header.inc.php';
 

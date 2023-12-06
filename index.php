@@ -29,7 +29,6 @@
         $path_to_news = './pages/news';
         $path_to_home = '#';
         $path_to_products = './pages/products';
-        $path_to_cardapio = './pages/cardapio';
         include_once 'includes/header.inc.php';
     ?>
     <h2>Notícias</h2>
