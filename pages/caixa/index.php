@@ -43,7 +43,7 @@
                     </div>
                 </a>
 
-                <a href="./historico.php" class="card history">
+                <a href="../users/carteira.php" class="card history">
                     <div>
                         <p>Consultar histórico <br>de clientes</p>
                     </div>

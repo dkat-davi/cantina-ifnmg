@@ -20,6 +20,7 @@ class User
         $user->active = $active;
         $user->carteira = FALSE;
         $user->pin = md5($pin . self::SALT);
+        $user->debitos = 0.00;
 
         R::store( $user );
 
@@ -159,5 +160,48 @@ class User
         R::close();
         header("Location: ../../pages/users/carteira.php");
         exit();
+    }
+
+    public static function IsActiveCarteira($id) {
+        $user = self::GetById($id);
+        return $user->carteira;
+    }
+
+    public static function validatePIN($userId, $pin)
+    {
+        DB::Start();
+
+        $user = R::load('user', $userId);
+
+        if ($user) {
+            if ($user->pin === md5($pin . self::SALT)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static function adicionarDebito($id, $valor) {
+        $user = self::GetById($id);
+        $user->debitos = $user->debitos + $valor;
+        DB::Start();
+        R::store( $user );
+        R::close();
+    }
+
+    public static function quitarDebito($id, $valor) {
+        $user = self::GetById($id);
+        
+        if($valor > $user->debitos) {
+            $user->debitos = 0;
+        } else {
+            $user->debitos = $user->debitos - $valor;
+        }
+        DB::Start();
+        R::store( $user );
+        R::close();
     }
 }

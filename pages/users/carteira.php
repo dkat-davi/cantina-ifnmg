@@ -87,7 +87,7 @@
                             }
                             ?>
                         </td>
-                        <td><a href="./update.php?id=<?=$user->id?>" class="edit">Débitos</a></td>
+                        <td><a href="../caixa/historico.php?id=<?=$user->id?>" class="edit">Débitos</a></td>
                     </tr>
                     <?php
                             }

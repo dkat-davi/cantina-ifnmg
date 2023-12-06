@@ -2,12 +2,23 @@
     require_once __DIR__ . '\..\..\classes\user.class.php';
     require_once __DIR__ . '\..\..\classes\compra.class.php';
     User::AllowAccess(['admin', 'gerente', 'caixa']);
-    if(isset($_POST['products']) && isset($_POST['qtde'])) {
+
+    date_default_timezone_set('America/Fortaleza');
+    if(isset($_POST['products']) &&
+        isset($_POST['qtde']) &&
+        !empty($_POST['products']) &&
+        !empty($_POST['qtde'])
+    ) {
         $products = $_POST['products'];
         foreach ($products as $productId) {
             $qtde = $_POST['qtde'][$productId];
             Compra::addProduct($productId, $qtde);
         }
+    }
+
+    $products = Compra::getAllProducts();
+    if(count($products) === 0) {
+        header("Location: add-product.php");
     }
 ?>
 
@@ -49,9 +60,171 @@
                 <div class="cliente">
                     <?php 
                         if(isset($_GET['carteira'])) {
-                            echo "<a href=\"?\" class=\"a-vista\">Comprar a vista</a>";
+                    ?>
+                            <a href="?" class="a-vista">Comprar a vista</a>
+                            
+                            <form method="post" class="form-cliente">
+                                <label for="user">Selecione o cliente:</label>
+                                <select name="user" id="user" required>
+                                    <option value="anonimo" selected disabled style="color: gray;">Selecione o cliente</option>
+                                    <?php
+                                        $users = User::GetAll();
+                                        foreach ($users as $user) {
+                                    ?>
+                                        <option value="<?=$user->id?>"><?=$user->id . ' ' . $user->email?></option>
+                                    <?php          
+                                        }
+                                    ?>
+                                </select>    
+
+                                <label for="method">Selecione o método de pagamento:</label>
+                                <select name="method" id="method">
+                                    <option value="dinheiro">Dinheiro</option>
+                                    <option value="pix">PIX</option>
+                                    <option value="debito">Cartão de débito</option>
+                                    <option value="credito">Cartão de credito</option>
+                                </select>
+
+                                <label for="pin">Solicitar PIN:</label>
+                                <input type="password" id="pin" name="pin" required placeholder="Solicite o PIN do cliente" maxlength="4">
+
+                                <button type="submit">Finalizar</button>
+                            </form>
+
+                            <?php
+                                if(isset($_POST['user']) &&
+                                isset($_POST['method'])
+                            ) {
+                                $clienteId = $_POST['user'];
+                                $products = Compra::getAllProducts();
+
+                                $valor_total = 0;
+                                foreach ($products as $product) {
+                                    $valor_total += $product['qtde'] * $product['product']->price;
+                                }
+                                $method = $_POST['method'];
+                                $compradoEm = new DateTime();
+
+                                if(isset($_POST['pin'])) {
+                                    $pin = $_POST['pin'];
+
+                                    if(User::validatePIN($clienteId, $pin)) {
+                                        Compra::ComprarAPrazo(
+                                            $clienteId,
+                                            $products,
+                                            $valor_total,
+                                            $method,
+                                            $compradoEm,
+                                        );
+                                    } else {
+                                        echo "<p style=\"color:red;\">PIN errado, por favor tente</p>";
+                                    }
+                                }
+                            }
+                            ?>
+                    <?php            
                         } else {
-                            echo "<a href=\"?carteira\" class=\"a-prazo\">Comprar a prazo</a>";
+                    ?>
+                            <a href="?carteira" class="a-prazo">Comprar a prazo</a>
+                            
+                            <form method="post" class="form-cliente">
+                                <label for="user">Selecione o cliente:</label>
+                                <select name="user" id="user">
+                                    <option value="anonimo" selected>Anônimo</option>
+                                    <?php
+                                        $users = User::GetAll();
+                                        foreach ($users as $user) {
+                                    ?>
+                                        <option value="<?=$user->id?>"><?=$user->id . ' ' . $user->email?></option>
+                                    <?php          
+                                        }
+                                    ?>
+                                </select>    
+
+                                <label for="method">Selecione o método de pagamento:</label>
+                                <select name="method" id="method">
+                                    <option value="dinheiro">Dinheiro</option>
+                                    <option value="pix">PIX</option>
+                                    <option value="debito">Cartão de débito</option>
+                                    <option value="credito">Cartão de credito</option>
+                                </select>
+
+                                <label for="pin">Solicitar PIN:</label>
+                                <input type="password" id="pin" name="pin" placeholder="Solicite o PIN do cliente" maxlength="4">
+
+                                <button type="submit">Finalizar</button>
+                            </form>
+                            
+                            <?php
+                                if(isset($_POST['user']) &&
+                                    isset($_POST['method'])
+                                ) {
+                                    $clienteId = $_POST['user'];
+                                    $products = Compra::getAllProducts();
+
+                                    $valor_total = 0;
+                                    foreach ($products as $product) {
+                                        $valor_total += $product['qtde'] * $product['product']->price;
+                                    }
+                                    $method = $_POST['method'];
+                                    $compradoEm = new DateTime();
+
+                                    if($clienteId === 'anonimo') {
+                                        Compra::ComprarAVista(
+                                            $clienteId,
+                                            $products,
+                                            $valor_total,
+                                            $method,
+                                            $compradoEm,
+                                        );
+
+                                        echo 
+                                        '<p 
+                                            style="
+                                                color:darkgreen; 
+                                                width: 100%; 
+                                                text-align:center;
+                                                padding: 1rem;
+                                                background-color: #70b38688;
+                                                border-radius: 5px;
+                                            ">
+                                            Compra finalizada com sucesso! Aguarde 3 segundos para fazer uma nova operação.
+                                        </p>';
+
+                                    } else {
+                                        if(isset($_POST['pin'])) {
+                                            $pin = $_POST['pin'];
+                                            if(User::validatePIN($clienteId, $pin)) {
+                                                Compra::ComprarAVista(
+                                                    $clienteId,
+                                                    $products,
+                                                    $valor_total,
+                                                    $method,
+                                                    $compradoEm,
+                                                );
+        
+                                                echo 
+                                                '<p 
+                                                    style="
+                                                        color:darkgreen; 
+                                                        width: 100%; 
+                                                        text-align:center;
+                                                        padding: 1rem;
+                                                        background-color: #70b38688;
+                                                        border-radius: 5px;
+                                                    ">
+                                                    Compra finalizada com sucesso! Aguarde 3 segundos para fazer uma nova operação.
+                                                </p>';
+                                            } else {
+                                                echo "<p style=\"color:red;\">PIN errado, por favor tente</p>";
+                                            }
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            ?>
+                    <?php
                         }
                     ?>
 
@@ -68,23 +241,24 @@
                                 <th>Descrição</th>
                                 <th>Preço</th>
                                 <th>Quantidade</th>
+                                <th>Total</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
     <?php
                         $products = Compra::getAllProducts();
-                        if(count($products) === 0) {
-                            header("Location: add-product.php");
-                        }
                         if(is_array($products)) {
+                            $total = 0;
                             foreach ($products as $product) {
+                            $total += $product['qtde'] * $product['product']->price;
     ?>
                                 <tr>
                                     <td><?=$product['product']->code?></td>
                                     <td><?=$product['product']->description?></td>
-                                    <td><?=$product['product']->price?></td>
+                                    <td><?=str_replace('.', ',', ($product['product']->price))?></td>
                                     <td><?=$product['qtde']?></td>
+                                    <td><?=$product['qtde'] * $product['product']->price?></td>
                                     <td>
                                         <a href="./remove-product.php?id=<?=$product['product']->id?>" class="delete">
                                             <i class="fa-solid fa-trash"></i>
@@ -97,6 +271,10 @@
     ?>
                     </tbody>
                     </table>
+                    <div class="total">
+                        <p>Total da compra</p>
+                        <h2>R$<?=str_replace('.', ',', $total)?></h2>
+                    </div>
                 </div>
             </div>
         </div>
