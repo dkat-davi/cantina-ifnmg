@@ -1,0 +1,76 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+  }
+  
+  .container {
+    width: 80%;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.8em;
+    background-color: #e7d4ac;
+    border-radius: 1rem;
+    padding: 1rem;
+    color: rgb(54, 36, 1);
+  }
+  
+  div.cards {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem 0;
+    width: 100%;
+  }
+  .card {
+    display: flex;
+    color: white;
+    text-decoration: none;
+    padding: 4rem 2rem;
+    border-radius: 1rem;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .card i {
+    font-size: 2em;
+  }
+  
+  .card p {
+    font-size: 1em;
+    font-weight: bold;
+  }
+  
+  .compra {
+    background-color: #82cc9b;
+    flex-direction: row;
+  }
+  
+  .compra:hover {
+    background-color: #70b386;
+    transition: background 0.2s ease-out;
+  }
+  
+  .compra i {
+    color: rgb(45, 134, 49);
+  }
+  
+  .history {
+    background-color: rgb(255, 187, 0);
+    color: rgb(43, 29, 0);
+  }
+  
+  .history:hover {
+    background-color: rgb(214, 158, 5);
+    transition: background 0.2s ease-out;
+  }
+  
+  .history i {
+    color: rgb(107, 84, 36);
+  }
+  

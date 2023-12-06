@@ -62,12 +62,12 @@
                     </div>
                 </a>
 
-                <a href="../cardapio" class="card cardapio">
+                <a href="../caixa" class="card cardapio">
                     <div>
-                        <p>Cardápio</p>
+                        <p>Caixa</p>
                     </div>
                     <div>
-                        <i class="fa-solid fa-utensils"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </div>
                 </a>
             </div>
