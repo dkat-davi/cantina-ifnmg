@@ -2,6 +2,7 @@
 require_once __DIR__ . '\r.class.php';
 require_once __DIR__ . '\database.class.php';
 require_once __DIR__ . '\util.class.php';
+date_default_timezone_set('America/Fortaleza');
 
 class User
 {

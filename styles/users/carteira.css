@@ -51,10 +51,24 @@ button {
   outline: none;
 }
 
-table {
+div.table {
   width: 80%;
+  background-color: #e7d4ac;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+table {
+  width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  background-color: #e7d4ac;
+  margin: auto;
+}
+
+thead tr,
+table tr:nth-child(even) {
+  background-color: #b6a072;
 }
 
 th,

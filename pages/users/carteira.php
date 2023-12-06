@@ -52,48 +52,50 @@
             }
         ?>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Tipo</th>
-                    <th>Carteira</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                        foreach ($users as $user) {
-                            $birth = new DateTime($user->birth);
-                            $birth = $birth->format('d/m/Y');
-                    ?>
-                <tr>
-                    <td><?=$user->id?></td>
-                    <td><?=$user->name?></td>
-                    <td><?=$user->email?></td>
-                    <td><?=strtoupper($user->role)?></td>
-                    <td>
-                        <?php
-                        if($user->carteira) {
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Carteira</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                            foreach ($users as $user) {
+                                $birth = new DateTime($user->birth);
+                                $birth = $birth->format('d/m/Y');
                         ?>
-                        <a href="./active-carteira.php?id=<?=$user->id?>" class="unactive">Desativar</a>
-                        <?php
-                        } else {  
+                    <tr>
+                        <td><?=$user->id?></td>
+                        <td><?=$user->name?></td>
+                        <td><?=$user->email?></td>
+                        <td><?=strtoupper($user->role)?></td>
+                        <td>
+                            <?php
+                            if($user->carteira) {
+                            ?>
+                            <a href="./active-carteira.php?id=<?=$user->id?>" class="unactive">Desativar</a>
+                            <?php
+                            } else {
+                            ?>
+                            <a href="./active-carteira.php?id=<?=$user->id?>" class="active">Ativar</a>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        <td><a href="./update.php?id=<?=$user->id?>" class="edit">Débitos</a></td>
+                    </tr>
+                    <?php
+                            }
                         ?>
-                        <a href="./active-carteira.php?id=<?=$user->id?>" class="active">Ativar</a>
-                        <?php
-                        }
-                        ?>
-                    </td>
-                    <td><a href="./update.php?id=<?=$user->id?>" class="edit">Débitos</a></td>
-                </tr>
-                <?php
-                        }
-                    ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
 
     </main>
 </body>

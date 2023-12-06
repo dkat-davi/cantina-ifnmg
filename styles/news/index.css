@@ -1,0 +1,134 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  width: 80%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  background-color: #d6c49f;
+}
+
+.container {
+  width: 80%;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.news {
+  width: 100%;
+  padding: 0 10%;
+}
+
+.title {
+  font-size: 2em;
+  text-align: left;
+  width: 80%;
+  padding: 2rem 0 0 0;
+  color: rgb(54, 36, 1);
+}
+
+div.cards {
+  display: flex;
+  align-items: start;
+  gap: 4rem;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  color: white;
+  text-decoration: none;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  gap: 2rem;
+  align-items: center;
+}
+
+.card i {
+  font-size: 3em;
+}
+
+.card p {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.add-news {
+  background-color: rgb(255, 187, 0);
+  color: rgb(43, 29, 0);
+}
+
+.add-news:hover {
+  background-color: rgb(214, 158, 5);
+  transition: background 0.2s ease-out;
+}
+
+.add-news i {
+  color: rgb(107, 84, 36);
+}
+
+div.new {
+  margin: 2rem 0 4rem 0;
+}
+
+.new {
+  display: flex;
+  gap: 2rem;
+}
+
+.new img {
+  border-radius: 0.8rem;
+}
+
+#date {
+  margin: 0.3rem 0;
+  font-size: 0.7em;
+  color: gray;
+}
+
+.options {
+  margin: 1rem 0;
+}
+
+.edit,
+.delete {
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  margin-top: 2rem;
+  transition: background 0.2s ease-out;
+}
+
+.edit {
+  background-color: #82cc9b;
+  color: rgb(43, 29, 0);
+}
+
+.delete {
+  background-color: #c63637;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #63a87a;
+}
+
+.delete:hover {
+  background-color: #ad2e2e;
+}
+
+#only-new {
+  text-decoration: none;
+  color: rgb(0, 2, 29);
+}
+
+#only-new:hover {
+  text-decoration: underline;
+}

@@ -56,44 +56,45 @@
             </div>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Preço ( R$ )</th>
-                    <th>Código</th>
-                    <th>Qtde</th>
-                    <th>Descrição</th>
-                    <th>Imagem</th>
-                    <th>Unidade</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    foreach ($products as $product) {
-                ?>
-                <tr>
-                    <td><?=$product->id?></td>
-                    <td><?=$product->name?></td>
-                    <td><?=$product->price?></td>
-                    <td><?=$product->code?></td>
-                    <td><?=$product->qtde?></td>
-                    <td><?=$product->description?></td>
-                    <td><img src="../../assets/img/products/<?=$product->image?>" alt="Imagem do <?$product->name?>"
-                            width="50" height="50">
-                    </td>
-                    <td><?=$product->unidade?></td>
-                    <td><a href="./delete.php?id=<?=$product->id?>&image=<?=$product->image?>"
-                            class="delete">Excluir</a></td>
-                </tr>
-                <?php
-                    }
-                ?>
-
-            </tbody>
-        </table>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço ( R$ )</th>
+                        <th>Código</th>
+                        <th>Qtde</th>
+                        <th>Descrição</th>
+                        <th>Imagem</th>
+                        <th>Unidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($products as $product) {
+                    ?>
+                    <tr>
+                        <td><?=$product->id?></td>
+                        <td><?=$product->name?></td>
+                        <td><?=$product->price?></td>
+                        <td><?=$product->code?></td>
+                        <td><?=$product->qtde?></td>
+                        <td><?=$product->description?></td>
+                        <td><img src="../../assets/img/products/<?=$product->image?>" alt="Imagem do <?$product->name?>"
+                                width="50" height="50">
+                        </td>
+                        <td><?=$product->unidade?></td>
+                        <td><a href="./delete.php?id=<?=$product->id?>&image=<?=$product->image?>"
+                                class="delete">Excluir</a></td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
     </main>
 </body>

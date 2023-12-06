@@ -1,7 +1,43 @@
 <?php
     require_once __DIR__ . '\..\..\classes\user.class.php';
     User::AllowAccess(['admin', 'gerente']);
-    
+
+    require_once __DIR__ . '\..\..\classes\news.class.php';
+    if(isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $news = News::GetById($id);
+    }
+
+    if(isset($_POST['id']) &&
+        isset($_POST['title']) &&
+        isset($_POST['description']) &&
+        isset($_POST['author']) &&
+        isset($_POST['content'])
+    ) {
+        require_once __DIR__ . '\..\..\classes\news.class.php';         
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+
+        if(isset($_FILES['banner'])) {
+            $banner = News::UploadImage();
+        } else {
+            $banner = '';
+        }
+        $description = $_POST['description'];
+        $author = $_POST['author'];
+        $content = $_POST['content'];
+
+        News::Update(
+            $id,
+            $title,
+            $banner,
+            $description,
+            $author,
+            $content
+        );
+
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,36 +95,43 @@
 
         <div class="container">
             <form method="post" enctype="multipart/form-data">
-                <h1 class="title">Cadastrar Notícia</h1>
+                <h1 class="title">Atualizar Notícia</h1>
                 <div class="info">
                     <div>
                         <label for="title">Título:</label><br>
-                        <input type="text" name="title" id="title" required placeholder="Insira o título da notícia">
+                        <input type="text" name="title" id="title" required placeholder="Insira o título da notícia"
+                            value="<?=$news->title?>">
                     </div>
 
                     <div>
                         <label for="banner">Selecione a imagem capa da notícia:</label>
                         <input type="file" id="banner" name="banner" accept="image/*" required>
                     </div>
+                    <div>
+                        <img src="../../assets/img/news/<?=$news->banner?>" alt="Imagem do <?=$news->title?>"
+                            width="300" heigth="120">
+                    </div>
                 </div>
                 <div class="info">
+                    <input type="hidden" name="id" value="<?=$_GET['id']?>">
                     <div>
                         <label for="author">Autor:</label><br>
-                        <input type="text" name="author" id="autor" required placeholder="Nome do autor da notícia">
+                        <input type="text" name="author" id="autor" required placeholder="Nome do autor da notícia"
+                            value="<?=$news->author?>">
                     </div>
 
                     <div>
                         <label for="description">Descrição:</label><br>
                         <input type="text" name="description" id="description" required
-                            placeholder="Insira um pequeno resumo da notícia">
+                            placeholder="Insira um pequeno resumo da notícia" value="<?=$news->description?>">
                     </div>
                 </div>
 
-                <textarea id="content" placeholder="Digite a sua notícia" name="content"></textarea>
+                <textarea id="content" placeholder="Digite a sua notícia" name="content"><?=$news->content?></textarea>
 
                 <div class="submit-form">
-                    <button type="submit" class="submit">Salvar</button>
-                    <button class="cancel"><a href="../admin">Cancelar</a></button>
+                    <button type="submit" class="submit">Atualizar</button>
+                    <button class="cancel"><a href="./index.php">Cancelar</a></button>
                 </div>
 
                 <?php
@@ -103,41 +146,12 @@
                                 background-color: #70b38688;
                                 border-radius: 5px;
                             ">
-                            Notícia criada com sucesso!
+                            Notícia atualizada com sucesso!
                         </p>';
                     }
                 ?>
             </form>
         </div>
-
-        <?php
-            if(isset($_POST['title']) &&
-                isset($_FILES['banner']) &&
-                isset($_POST['description']) &&
-                isset($_POST['author']) &&
-                isset($_POST['content'])
-            ) {
-                require_once __DIR__ . '\..\..\classes\news.class.php';         
-                $title = $_POST['title'];
-                $banner = News::UploadImage();
-                $description = $_POST['description'];
-                $author = $_POST['author'];
-                $content = $_POST['content'];
-
-                News::Create(
-                    $title,
-                    $banner,
-                    $description,
-                    $author,
-                    $content
-                );
-
-                header("Location: ?success");
-            }
-        ?>
-
-
-
     </main>
 
 </html>

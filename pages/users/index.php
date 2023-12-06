@@ -61,56 +61,54 @@
         </div>
 
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Nasc.</th>
-                    <th>Tipo</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-
-                <?php
-                    foreach ($users as $user) {
-                        $birth = new DateTime($user->birth);
-                        $birth = $birth->format('d/m/Y');
-                ?>
-                <tr>
-                    <td><?=$user->id?></td>
-                    <td><?=$user->name?></td>
-                    <td><?=$user->email?></td>
-                    <td><?=$birth?></td>
-                    <td><?=strtoupper($user->role)?></td>
-                    <td>
-                        <?php
-                        if($user->active) {
-                        ?>
-                        <a href="./active.php?id=<?=$user->id?>" class="unactive">Desativar</a>
-                        <?php
-                        } else {  
-                        ?>
-                        <a href="./active.php?id=<?=$user->id?>" class="active">Ativar</a>
-                        <?php
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Nasc.</th>
+                        <th>Tipo</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($users as $user) {
+                            $birth = new DateTime($user->birth);
+                            $birth = $birth->format('d/m/Y');
+                    ?>
+                    <tr>
+                        <td><?=$user->id?></td>
+                        <td><?=$user->name?></td>
+                        <td><?=$user->email?></td>
+                        <td><?=$birth?></td>
+                        <td><?=strtoupper($user->role)?></td>
+                        <td>
+                            <?php
+                            if($user->active) {
+                            ?>
+                            <a href="./active.php?id=<?=$user->id?>" class="unactive">Desativar</a>
+                            <?php
+                            } else {
+                            ?>
+                            <a href="./active.php?id=<?=$user->id?>" class="active">Ativar</a>
+                            <?php
+                            }
+                            ?>
+                        </td>
+                        <td><a href="./update.php?id=<?=$user->id?>" class="edit">Editar</a></td>
+                        <td><a href="./delete.php?id=<?=$user->id?>" class="delete">Excluir</a></td>
+                    </tr>
+                    <?php
                         }
-                        ?>
-                    </td>
-                    <td><a href="./update.php?id=<?=$user->id?>" class="edit">Editar</a></td>
-                    <td><a href="./delete.php?id=<?=$user->id?>" class="delete">Excluir</a></td>
-                </tr>
-                <?php
-                    }
-                ?>
-
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
 
     </main>
 </body>

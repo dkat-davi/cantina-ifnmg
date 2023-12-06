@@ -1,0 +1,24 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 80%;
+  background-color: #d6c49f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.news {
+  width: 100%;
+  padding: 0 10%;
+}
+
+#date {
+  margin: 0.3rem 0;
+  font-size: 0.7em;
+  color: gray;
+}
